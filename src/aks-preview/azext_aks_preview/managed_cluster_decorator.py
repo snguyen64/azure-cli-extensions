@@ -489,6 +489,14 @@ class AKSPreviewManagedClusterContext(AKSManagedClusterContext):
         """
         return bool(self.raw_param.get('enable_cilium_dataplane'))
 
+    def get_enable_network_observability(self) -> bool:
+        """Get the value of enable_network_observability
+
+        :return: bool
+        """
+        return bool(self.raw_param.get('enable_network_observability'))
+
+
     def get_load_balancer_managed_outbound_ipv6_count(self) -> Union[int, None]:
         """Obtain the expected count of IPv6 managed outbound IPs.
 
@@ -1987,6 +1995,8 @@ class AKSPreviewManagedClusterCreateDecorator(AKSManagedClusterCreateDecorator):
 
         if self.context.get_enable_cilium_dataplane():
             network_profile.ebpf_dataplane = CONST_EBPF_DATAPLANE_CILIUM
+
+        network_profile.monitoring.enabled = self.context.get_enable_network_observability()
 
         return mc
 

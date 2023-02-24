@@ -707,6 +707,7 @@ def aks_create(
     enable_vpa=False,
     enable_node_restriction=False,
     enable_cilium_dataplane=False,
+    enable_network_observability=False,
     custom_ca_trust_certificates=None,
     # nodepool
     crg_id=None,

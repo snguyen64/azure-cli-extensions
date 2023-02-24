@@ -224,6 +224,9 @@ helps['aks create'] = """
           long-summary: |
               Used together with the "azure" network plugin.
               Requires either --pod-subnet-id or --network-plugin-mode=overlay.
+        - name: --enable-network-observability
+          type: bool
+          short-summary: Enable network observability for a Kubernetes cluster.
         - name: --no-ssh-key -x
           type: string
           short-summary: Do not use or create a local SSH key.
